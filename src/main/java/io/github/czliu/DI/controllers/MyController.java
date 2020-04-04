@@ -1,13 +1,18 @@
 package io.github.czliu.DI.controllers;
 
+import io.github.czliu.DI.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hello world!!!");
+    private final GreetingService greetingService;
 
-        return "Hi Folks!";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+        return greetingService.sayGreeting();
     }
 }
