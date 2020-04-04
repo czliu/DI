@@ -1,9 +1,6 @@
 package io.github.czliu.DI;
 
-import io.github.czliu.DI.controllers.ConstructorInjectedController;
-import io.github.czliu.DI.controllers.MyController;
-import io.github.czliu.DI.controllers.PropertyInjectedController;
-import io.github.czliu.DI.controllers.SetterInjectedController;
+import io.github.czliu.DI.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,9 @@ public class DiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(DiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
